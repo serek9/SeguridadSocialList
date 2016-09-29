@@ -12,14 +12,14 @@ public class Main {
         seguridadSocial.altaPersona(maria);
         seguridadSocial.altaPersona(carlos);
         seguridadSocial.altaPersona(anna);
-        //System.out.println("Altas a la seguridad social: " + seguridadSocial.obtenerTodas());
+        System.out.println("Altas a la seguridad social: " + seguridadSocial.obtenerTodas());
 
 
         System.out.println("Baja a la seguridad social: " + anna.getDni());
         seguridadSocial.bajaPersona(anna.getDni());
 
 
-        //System.out.println("Lista de afiliados a la S.S.: " + seguridadSocial.obtenerTodas());
+        System.out.println("Lista de afiliados a la S.S.: " + seguridadSocial.obtenerTodas());
 
         System.out.println("Obtener persona por DNI: " + seguridadSocial.obtenerPersonaPorDNI(jose.getDni()));
 
