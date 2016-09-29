@@ -1,3 +1,5 @@
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -38,21 +40,34 @@ public class SeguridadSocial {
         }
     }
 
-    public Persona obtenerPersonaPorDNI(String dni) {
-    
-    }
+    public Persona obtenerPersonaPorDNI(String dni) { return personasList.get(obtenerPosDNI(dni)); }
 
     public Persona obtenerPersonaPorNumSS(String numSS) {
+            boolean enc = false;
+            int i = 0;
+            do {
+                Persona a = personasList.get(i);
+                if (a.getNumSS().equals(numSS)) {
+                    enc = true;
+                } else {
+                    i++;
+                }
+            } while (enc = false);
+            if (enc = false) {
+                return null;
+            } else {
+                return personasList.get(i);
+            }
     }
 
-    public List<Persona> obtenerPersonasRangoSalarial(double min, double max){
+    /*public List<Persona> obtenerPersonasRangoSalarial(double min, double max){
     }
 
     public List<Persona> obtenerPersonasMayoresQue(int edad){
     }
 
     public List<Persona> obtenerTodas(){
-    }
+    }*/
 
     @Override
     public String toString() {
