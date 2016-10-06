@@ -9,34 +9,6 @@ import java.util.stream.Collectors;
 public class SeguridadSocial {
     private List<Persona> personasList;
 
-    /////////////////////////HASHMAP PART:
-    private Map<String, Persona> personaMapDni = new HashMap<>();
-    private Map<String, Persona> personaMapNumeroSS = new HashMap<>();
-    //A PARTIR DE AQUI HACER LOS METODOS CON HASH....
-    public void altaPersonaMap(Persona persona) {
-        if (!personaMapDni.containsKey(persona.getDni()) && !personaMapNumeroSS.containsKey(persona.getNumSS())){
-            personaMapDni.put(persona.getDni(), persona);
-            personaMapNumeroSS.put(persona.getNumSS(), persona);
-        }
-    }
-
-    public void bajaPersonaMap(String dni){
-        personaMapNumeroSS.remove(personaMapDni.get(dni).getNumSS());
-        personasList.removeIf(persona -> persona.getDni().equals(dni));
-    }
-
-    public Persona obtenerPersonaPorDNIMap(String dni){
-        return personaMapDni.get(dni);
-    }
-
-    public Persona obtenerPersonaPorNumSSMap(String numSS){
-        return  personaMapNumeroSS.get(numSS);
-    }
-
-    public List<Persona> obtenerPersonaRangoSalarialMap(double min, double max){
-        return personaMapNumeroSS.values().stream().filter(persona -> persona.getSalario()>=min&&persona.getSalario()<max).collect(Collectors.toList());
-    }
-
     //////////////////////ARRAYLIST PART:
     public SeguridadSocial() {
         personasList = new ArrayList<>();
@@ -93,12 +65,26 @@ public class SeguridadSocial {
             }
     }
 
-    /*public List<Persona> obtenerPersonasRangoSalarial(double min, double max){
+    public List<Persona> obtenerPersonasRangoSalarial(double min, double max){
+        List<Persona> lista = new ArrayList<>();
+        for (int i = 0; i < personasList.size(); i++) {
+            if (personasList.get(i).getSalario()>=min && personasList.get(i).getSalario()<=max){
+                lista.add(personasList.get(i));
+            }
+        }
+        return lista;
     }
 
     public List<Persona> obtenerPersonasMayoresQue(int edad){
+        List<Persona> lista = new ArrayList<>();
+        for (int i = 0; i < personasList.size(); i++) {
+            if (personasList.get(i).getEdad()>edad){
+                lista.add(personasList.get(i));
+            }
+        }
+        return lista;
     }
-    */
+
     public List<Persona> obtenerTodas(){
         return personasList;
     }
@@ -110,8 +96,4 @@ public class SeguridadSocial {
                 '}';
     }
 }
-
-/*HASHMAP PART
-    private Map<Persona> =
- */
 
